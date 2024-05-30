@@ -51,7 +51,7 @@ $(document).ready(function() {
             position: 'absolute', 
             margin: '100px 40px 50px 40px',
             ackgroundColor: 'transparent', 
-            backgroundImage: 'url("ep2_start_intro.png")', 
+            backgroundImage: 'url("ep4_start_intro.png")', 
             backgroundSize: 'cover' 
         });
 
@@ -105,7 +105,7 @@ $(document).ready(function() {
             height: '206px', 
             border: 'none',
             backgroundColor: 'transparent', 
-            backgroundImage: 'url("princess1_cookie.png")', 
+            backgroundImage: 'url("macaron1_cookie.png")', 
             backgroundSize: 'cover' 
         });
 
@@ -140,7 +140,7 @@ $(document).ready(function() {
             height: '206px', 
             border: 'none',
             backgroundColor: 'transparent', 
-            backgroundImage: 'url("snow1_cookie.png")', 
+            backgroundImage: 'url("pudding1_cookie.png")', 
             backgroundSize: 'cover' 
         });
 
@@ -175,7 +175,7 @@ $(document).ready(function() {
             height: '200px', 
             border: 'none',
             backgroundColor: 'transparent', 
-            backgroundImage: 'url("wolf1_cookie.png")', 
+            backgroundImage: 'url("pancake1_cookie.png")', 
             backgroundSize: 'cover' 
         });
 
@@ -216,7 +216,7 @@ $(document).ready(function() {
             }
         }, function() {
             if (!princessClicked) {
-                $(this).css('backgroundImage', 'url("princess1_cookie.png")');
+                $(this).css('backgroundImage', 'url("macaron1_cookie.png")');
             }
         });
 
@@ -224,15 +224,15 @@ $(document).ready(function() {
             macaroonCookie();
             if (!princessClicked) {
                 princessClicked = true;
-                $(this).css('backgroundImage', 'url("princess2_cookie.png")');
+                $(this).css('backgroundImage', 'url("macaron2_cookie.png")');
                 // 다른 버튼들의 클릭 상태 및 hover 상태 해제
                 snowClicked = false;
                 wolfClicked = false;
-                cbutton2.css('backgroundImage', 'url("snow1_cookie.png")');
-                cbutton3.css('backgroundImage', 'url("wolf1_cookie.png")');
+                cbutton2.css('backgroundImage', 'url("pudding1_cookie.png")');
+                cbutton3.css('backgroundImage', 'url("pancake1_cookie.png")');
             } else {
                 princessClicked = false;
-                $(this).css('backgroundImage', 'url("princess1_cookie.png")');
+                $(this).css('backgroundImage', 'url("macaron1_cookie.png")');
             }
         });
 
@@ -243,7 +243,7 @@ $(document).ready(function() {
             }
         }, function() {
             if (!snowClicked) {
-                $(this).css('backgroundImage', 'url("snow1_cookie.png")');
+                $(this).css('backgroundImage', 'url("pudding1_cookie.png")');
             }
         });
 
@@ -251,14 +251,14 @@ $(document).ready(function() {
             milkpuddingCookie();
             if (!snowClicked) {
                 snowClicked = true;
-                $(this).css('backgroundImage', 'url("snow2_cookie.png")');
+                $(this).css('backgroundImage', 'url("pudding2_cookie.png")');
                 princessClicked = false;
                 wolfClicked = false;
-                cbutton1.css('backgroundImage', 'url("princess1_cookie.png")');
-                cbutton3.css('backgroundImage', 'url("wolf1_cookie.png")');
+                cbutton1.css('backgroundImage', 'url("macaron1_cookie.png")');
+                cbutton3.css('backgroundImage', 'url("pancake1_cookie.png")');
             } else {
                 snowClicked = false;
-                $(this).css('backgroundImage', 'url("snow1_cookie.png")');
+                $(this).css('backgroundImage', 'url("pudding1_cookie.png")');
             }
         });
 
@@ -269,7 +269,7 @@ $(document).ready(function() {
             }
         }, function() {
             if (!wolfClicked) {
-                $(this).css('backgroundImage', 'url("wolf1_cookie.png")');
+                $(this).css('backgroundImage', 'url("pancake1_cookie.png")');
             }
         });
 
@@ -277,14 +277,14 @@ $(document).ready(function() {
             pancakeCookie();
             if (!wolfClicked) {
                 wolfClicked = true;
-                $(this).css('backgroundImage', 'url("wolf2_cookie.png")');
+                $(this).css('backgroundImage', 'url("pancake2_cookie.png")');
                 princessClicked = false;
                 snowClicked = false;
-                cbutton1.css('backgroundImage', 'url("princess1_cookie.png")');
-                cbutton2.css('backgroundImage', 'url("snow1_cookie.png")');
+                cbutton1.css('backgroundImage', 'url("macaron1_cookie.png")');
+                cbutton2.css('backgroundImage', 'url("pudding1_cookie.png")');
             } else {
                 wolfClicked = false;
-                $(this).css('backgroundImage', 'url("wolf1_cookie.png")');
+                $(this).css('backgroundImage', 'url("pancake1_cookie.png")');
             }
         });
 
