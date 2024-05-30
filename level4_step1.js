@@ -362,13 +362,13 @@ $(document).ready(function() {
            bonusX : canvas.width / 2,
            bonusY : canvas.height - paddleHeight - 70,
            bonusDx : parseFloat(sessionStorage.getItem('dx')),
-           bonusDy : parseFloat(sessionStorage.getItem('dy')),
+           bonusDy : parseFloat(sessionStorage.getItem('dy')) - (i * 0.2),
            bonusBallImage : ballImage,
            bonusballRadius : ballRadius
         });
     }
     var bonuspaddleX = (canvas.width / 2) - (paddleWidth / 2);
-    var bonuspaddleY = canvas.height - 50;
+    var bonuspaddleY = canvas.height - paddleHeight - 20;
 
     //공 그리기
     function drawBonusBalls() {
@@ -387,7 +387,14 @@ $(document).ready(function() {
 
             if (ball.bonusX + ball.bonusDx > canvas.width - 30 || ball.bonusX + ball.bonusDx < 10) {ball.bonusDx = -ball.bonusDx;}
             if (ball.bonusY + ball.bonusDy > canvas.height - 10 || ball.bonusY + ball.bonusDy < 10) {ball.bonusDy = -ball.bonusDy;}
-           
+
+            if (ball.bonusY > canvas.height - 20) {
+                ball.bonusX = 0;
+                ball.bonusY = 0;
+                ball.bonusDX = 0;
+                ball.bonusDy = 0;
+                ball.bonusballRadius = 0;
+            }
         });
     }
 
@@ -461,6 +468,17 @@ function drawBonusPaddle() {
         }
     }    
 
+    function snowWallsCollision(){
+        balls.forEach(function(ball) {
+            if(snowAbilityActive){
+                if (ball.bonusY + ball.bonusDy > canvas.height - paddleHeight - 20 -1) {
+                    if ((ball.bonusX > wallX1 && ball.bonusX < wallX1 + wallSize) || (ball.bonusX > wallX2 && ball.bonusX < wallX2 + wallSize)) {
+                        ball.bonusDy = -ball.bonusDy;
+                    }
+                }
+            }
+        });
+    }
 
     // 공을 5개로 증가시키는 함수 (보너스타임)    
     function drawBonusGame() {
@@ -495,13 +513,7 @@ function drawBonusPaddle() {
             drawWalls();
 
         // 눈설탕맛 벽 충돌처리
-            if(snowAbilityActive){
-                if (y + dy > canvas.height - paddleHeight - 20 -1) {
-                    if ((x > wallX1 && x < wallX1 + wallSize) || (x > wallX2 && x < wallX2 + wallSize)) {
-                        dy = -dy;
-                    }
-                }
-            }
+        snowWallsCollision();
     }   
 
     function createPopup(pageUrl, backgroundImageUrl) {
