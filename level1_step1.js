@@ -371,14 +371,6 @@ $(document).ready(function() {
 
             if (ball.bonusX + ball.bonusDx > canvas.width - 30 || ball.bonusX + ball.bonusDx < 10) {ball.bonusDx = -ball.bonusDx;}
             if (ball.bonusY + ball.bonusDy > canvas.height - 10 || ball.bonusY + ball.bonusDy < 10) {ball.bonusDy = -ball.bonusDy;}
-           
-            if (ball.bonusY > canvas.height - 20) {
-                ball.bonusX = 0;
-                ball.bonusY = 0;
-                ball.bonusDX = 0;
-                ball.bonusDy = 0;
-                ball.bonusballRadius = 0;
-            }
         });
     }
 
@@ -432,14 +424,11 @@ function bonusCollisionPaddle() {
         }
     });
 }
-
 // 패들 그리기 함수
 function drawBonusPaddle() {
-    ctx.beginPath();
-    ctx.rect(bonuspaddleX, bonuspaddleY, paddleWidth, paddleHeight);
-    ctx.fillStyle = 'green';
-    ctx.fill();
-    ctx.closePath();
+    var paddleImg = new Image();
+    paddleImg.src = 'paddle.png';
+    ctx.drawImage(paddleImg, bonuspaddleX, bonuspaddleY, paddleWidth, paddleHeight);
 }
 
 
@@ -531,7 +520,7 @@ function drawBonusPaddle() {
             border: 'none',
             transition: 'transform 0.2s ease',
             backgroundColor: 'transparent', 
-            backgroundImage: 'url("확인버튼.png")',//수정 발생
+            backgroundImage: 'url("ok.png")',//수정 발생
             backgroundSize: 'cover' 
         });
         
@@ -629,13 +618,11 @@ function drawBonusPaddle() {
     }
 
     // 패들 그리기 함수
-    function drawPaddle() {
-        ctx.beginPath();
-        ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
-        ctx.fillStyle = 'green';
-        ctx.fill();
-        ctx.closePath();
-    }
+function drawPaddle() {
+    var paddleImg = new Image();
+    paddleImg.src = 'paddle.png';
+    ctx.drawImage(paddleImg, paddleX, paddleY, paddleWidth, paddleHeight);
+}
 
     // 눈설탕 벽 그리기
     let wallSize = 100;
@@ -732,4 +719,24 @@ function drawBonusPaddle() {
     
     // 게임 시작
     let gameStart = setInterval(drawGame, 10);
+
+
+
+  // 음악!!
+    var backgroundMusic = $('#background-music')[0];
+    var musicButton = $('#music-button');
+    var isMusicPlaying = false;
+    var musicButtonImage = $('#music-button img');
+
+    musicButton.click(function() {
+        if (isMusicPlaying) {
+            backgroundMusic.pause();
+            musicButtonImage.attr('src', 'audio_off.png');
+        } else {
+            backgroundMusic.play();
+            musicButtonImage.attr('src', 'audio_on.png');
+        }
+        isMusicPlaying = !isMusicPlaying;
+        sessionStorage.setItem('isMusicPlaying', isMusicPlaying);
+    });
 });

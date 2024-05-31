@@ -157,7 +157,7 @@ $(document).ready(function() {
             sessionStorage.setItem('devilAbilityActive', 'false'); // 악마맛 쿠키 비활성화
 
             // level3
-            sessionStorage.setItem('ballRadius', 10); // 마법사맛 쿠키 공 반지름 초기화
+            sessionStorage.setItem('ballRadius', 10); // 마법사맛 쿠키 공 반지름 1.5배
             sessionStorage.setItem('prophetAbilityActive', 'true'); // 예언자맛 쿠키 비활성화
             sessionStorage.setItem('dx', '2');
             sessionStorage.setItem('dy', '-2'); // 연금술사맛 쿠키 공 속도 초기화
@@ -192,10 +192,10 @@ $(document).ready(function() {
             sessionStorage.setItem('devilAbilityActive', 'false'); // 악마맛 쿠키 비활성화
 
             // level3
-            sessionStorage.setItem('ballRadius', 10); // 마법사맛 쿠키 공 반지름 초기화
+            sessionStorage.setItem('ballRadius', 10); // 마법사맛 쿠키 공 반지름 1.5배
             sessionStorage.setItem('prophetAbilityActive', 'false'); // 예언자맛 쿠키 비활성화
             sessionStorage.setItem('dx', '1.5');
-            sessionStorage.setItem('dy', '-1.5'); // 연금술사맛 쿠키 공 속도 느리게
+            sessionStorage.setItem('dy', '-1.5'); // 연금술사맛 쿠키 공 속도 초기화
 
             //level4
             sessionStorage.setItem('macaroonAbilityActive', 'false'); // 마카롱맛 쿠키

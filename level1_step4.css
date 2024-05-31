@@ -113,3 +113,11 @@ footer {
     margin: 0 auto;
 }
 
+
+#music-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+}
