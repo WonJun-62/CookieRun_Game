@@ -682,7 +682,7 @@ function drawsPaddle() {
         movePaddle();
     
         // 패들 그리기
-        drawPaddle();
+        drawsPaddle();
     
         // 눈설탕맛 선택시 하단 벽 그리기
         drawWalls();
