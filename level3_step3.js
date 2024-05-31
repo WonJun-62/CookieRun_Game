@@ -387,14 +387,7 @@ $(document).ready(function() {
 
             if (ball.bonusX + ball.bonusDx > canvas.width - 30 || ball.bonusX + ball.bonusDx < 10) {ball.bonusDx = -ball.bonusDx;}
             if (ball.bonusY + ball.bonusDy > canvas.height - 10 || ball.bonusY + ball.bonusDy < 10) {ball.bonusDy = -ball.bonusDy;}
-
-            if (ball.bonusY > canvas.height - 20) {
-                ball.bonusX = 0;
-                ball.bonusY = 0;
-                ball.bonusDX = 0;
-                ball.bonusDy = 0;
-                ball.bonusballRadius = 0;
-            }
+           
         });
     }
 
@@ -451,13 +444,22 @@ $(document).ready(function() {
 
     // 패들 그리기 함수
     function drawBonusPaddle() {
-        ctx.beginPath();
-        ctx.rect(bonuspaddleX, bonuspaddleY, paddleWidth, paddleHeight);
-        ctx.fillStyle = 'green';
-        ctx.fill();
-        ctx.closePath();
+        var paddleImg = new Image();
+        paddleImg.src = 'paddle.png';
+        ctx.drawImage(paddleImg, bonuspaddleX, bonuspaddleY, paddleWidth, paddleHeight);
     }
 
+
+    // 패들 이동 함수
+    function movebonusPaddle() {
+        if (rightPressed && bonuspaddleX < canvas.width - paddleWidth) {
+            bonuspaddleX += paddleSpeed; // 패들 이동 속도를 증가시킴
+        } else if (leftPressed && bonuspaddleX > 0) {
+            bonuspaddleX -= paddleSpeed; // 패들 이동 속도를 증가시킴
+        }
+    }    
+
+// 눈설탕맛 벽 충돌처리
     function snowWallsCollision(){
         balls.forEach(function(ball) {
             if(snowAbilityActive){
@@ -469,17 +471,6 @@ $(document).ready(function() {
             }
         });
     }
-
-    // 패들 이동 함수
-    function movebonusPaddle() {
-        if (rightPressed && bonuspaddleX < canvas.width - paddleWidth) {
-            bonuspaddleX += paddleSpeed; // 패들 이동 속도를 증가시킴
-        } else if (leftPressed && bonuspaddleX > 0) {
-            bonuspaddleX -= paddleSpeed; // 패들 이동 속도를 증가시킴
-        }
-    }    
-
-    
 
     // 공을 5개로 증가시키는 함수 (보너스타임)    
     function drawBonusGame() {
@@ -514,7 +505,7 @@ $(document).ready(function() {
             drawWalls();
 
         // 눈설탕맛 벽 충돌처리
-        snowWallsCollision();
+            snowWallsCollision();
     }   
 
     function createPopup(pageUrl, backgroundImageUrl) {
@@ -547,7 +538,7 @@ $(document).ready(function() {
             border: 'none',
             transition: 'transform 0.2s ease',
             backgroundColor: 'transparent', 
-            backgroundImage: 'url("확인버튼.png")',//수정 발생
+            backgroundImage: 'url("ok.png")',//수정 발생
             backgroundSize: 'cover' 
         });
         
@@ -644,14 +635,12 @@ $(document).ready(function() {
         ctx.drawImage(ballImage, x - ballRadius, y - ballRadius, ballRadius*2, ballRadius*2); // 이미지 크기는 20x20, 이미지의 중심을 공의 중심으로 설정하기 위해 x-10, y-10
     }
 
-    // 패들 그리기 함수
-    function drawPaddle() {
-        ctx.beginPath();
-        ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
-        ctx.fillStyle = 'green';
-        ctx.fill();
-        ctx.closePath();
-    }
+           // 패들 그리기 함수
+function drawPaddle() {
+    var paddleImg = new Image();
+    paddleImg.src = 'paddle.png';
+    ctx.drawImage(paddleImg, paddleX, paddleY, paddleWidth, paddleHeight);
+}
 
     // 눈설탕 벽 그리기
     let wallSize = 100;
@@ -748,4 +737,22 @@ $(document).ready(function() {
     
     // 게임 시작
     let gameStart = setInterval(drawGame, 10);
+
+     // 음악!!
+    var backgroundMusic = $('#background-music')[0];
+    var musicButton = $('#music-button');
+    var isMusicPlaying = false;
+    var musicButtonImage = $('#music-button img');
+
+    musicButton.click(function() {
+        if (isMusicPlaying) {
+            backgroundMusic.pause();
+            musicButtonImage.attr('src', 'audio_off.png');
+        } else {
+            backgroundMusic.play();
+            musicButtonImage.attr('src', 'audio_on.png');
+        }
+        isMusicPlaying = !isMusicPlaying;
+        sessionStorage.setItem('isMusicPlaying', isMusicPlaying);
+    });
 });

@@ -113,3 +113,14 @@ footer {
     margin: 0 auto;
 }
 
+
+/* 음악 */
+
+
+#music-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+}

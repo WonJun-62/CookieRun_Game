@@ -49,6 +49,7 @@ $(document).ready(function() {
             musicButtonImage.attr('src', 'audio_on.png');
         }
         isMusicPlaying = !isMusicPlaying;
+        sessionStorage.setItem('isMusicPlaying', isMusicPlaying);
     });
 
 });

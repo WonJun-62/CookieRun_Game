@@ -1,4 +1,14 @@
-body {
+
+/* 음악 */
+
+
+#music-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+}body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -54,6 +54,16 @@ header {
     top: 100px;
 }
 
+/* 음악 */
+
+
+#music-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+}
 footer {
     margin-bottom: 0;
     width: 800px;
