@@ -300,7 +300,7 @@ $(document).ready(function() {
         }
     }
     
-    function handleBlockHit(block, c, r) {
+    function handleBlockHit(block) {
         block.remainingHits--; // 충돌 시 값 감소
         if (block.remainingHits <= 0) {
             block.status = 0; // 값이 0이 되면 블록 제거
